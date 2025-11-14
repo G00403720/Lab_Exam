@@ -11,7 +11,7 @@ from sqlalchemy.exc import IntegrityError
 
 from app.database import engine, SessionLocal
 from app.models import Base
-#from app.schemas import 
+from app.schemas import Customer, Order
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -38,3 +38,38 @@ def get_db():
 def health():
     return {"status": "ok"}
 
+@app.post("/api/customer")
+def post_customer(customer: customer):
+    return customer
+
+@app.get("/api/customer")
+def customer():
+    return {"Customer List": }
+
+@app.get("/api/customer/{id}")
+def get_customer(id: int):
+    return {"Customer ID": id}  
+
+@app.put("/api/customer/{id}")
+def put_customer():
+    return {"Customer Updated": }  
+
+@app.patch("/api/customer/{id}")  
+def patch_customer():
+    return {"Customer Partially Updated": }  
+
+@app.delete("/api/customer/{id}") 
+def delete_customer():
+    return {"Customer Deleted": }  
+
+@app.post("/api/order")
+def post_order(order: order):
+    return order
+
+@app.get("/api/order")
+def order():
+    return {"Order List": }
+
+@app.get("/api/order/{id}")
+def get_order(id: int):
+    return {"Order ID": id}
